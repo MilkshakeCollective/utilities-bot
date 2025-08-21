@@ -6,11 +6,15 @@ import { loadCommands } from './handlers/commands.js';
 import { loadEvents } from './handlers/events.js';
 import { logger } from './components/exports.js';
 
-export class CoffeeClient extends Client {
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+export class MilkshakeClient extends Client {
 	public events: Collection<string, EventInterface> = new Collection();
 	public commands: Collection<string, CommandInterface> = new Collection();
 	public context: Collection<string, CommandInterface> = new Collection();
 	public config: ConfigInterface;
+    public prisma: typeof prisma;
 	constructor() {
 		super({
 			intents: [
@@ -49,6 +53,7 @@ export class CoffeeClient extends Client {
 			makeCache: Options.cacheWithLimits({ MessageManager: 100 }),
 		});
 		this.config = config;
+        this.prisma = prisma;
 	}
 
 	public async InitializeClient() {
@@ -70,4 +75,4 @@ export class CoffeeClient extends Client {
 	}
 }
 
-new CoffeeClient().InitializeClient();
+new MilkshakeClient().InitializeClient();
