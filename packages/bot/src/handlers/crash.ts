@@ -100,6 +100,4 @@ export function loadCrashHandler() {
 			process.exit(0);
 		});
 	});
-
-	logger.info('Crash handler enabled and running.');
 }
