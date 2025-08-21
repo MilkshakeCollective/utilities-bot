@@ -8,5 +8,14 @@ datasource db {
 }
 
 model GuildSettings {
-  guildId String @id
+  guildId          String  @id
+  roadmapMessageId String?
+}
+
+model RoadmapItem {
+  id        String   @id
+  title     String
+  link      String?
+  status    String   @default("🍼 Not started")
+  createdAt DateTime @default(now())
 }
