@@ -31,7 +31,7 @@ export const config: ConfigInterface = {
 			channelId: process.env.RELEASE_CHANNEL_ID as string,
 		},
 		{
-			repo: 'MilkshakeCollective/Milkshake-Utilities',
+			repo: 'MilkshakeCollective/utilities-bot',
 			channelId: process.env.RELEASE_CHANNEL_ID as string,
 		},
 	],
