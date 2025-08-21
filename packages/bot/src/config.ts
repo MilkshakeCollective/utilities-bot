@@ -1,15 +1,20 @@
 import { ObjectNameIDArray } from './types.js';
-
 import process from 'node:process';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export type webhookArray = Array<{ name: string; id: string; token: string }>;
 
+export interface RepoConfig {
+	repo: string;
+	channelId: string;
+}
+
 export interface ConfigInterface {
 	client: { token: string; id: string; secret: string };
 	guilds: ObjectNameIDArray;
 	webhooks: webhookArray;
+	repos: RepoConfig[];
 }
 
 export const config: ConfigInterface = {
@@ -20,4 +25,14 @@ export const config: ConfigInterface = {
 	},
 	guilds: [],
 	webhooks: [],
+	repos: [
+		{
+			repo: 'MilkshakeCollective/bot-template',
+			channelId: process.env.RELEASE_CHANNEL_ID as string,
+		},
+		{
+			repo: 'MilkshakeCollective/Milkshake-Utilities',
+			channelId: process.env.RELEASE_CHANNEL_ID as string,
+		},
+	],
 };
