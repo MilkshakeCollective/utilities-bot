@@ -1,6 +1,6 @@
 import { TextChannel, EmbedBuilder } from 'discord.js';
 import { MilkshakeClient } from '../../index.js';
-// import { logger } from '../exports.js';
+import { logger } from '../exports.js';
 import axios from 'axios';
 
 let lastReleases: Record<string, string> = {};
@@ -36,7 +36,7 @@ export async function checkReleases(client: MilkshakeClient) {
         await channel.send({ embeds: [embed] });
       }
     } catch (err) {
-      // logger.error(`❌ Failed to check release for ${repo}:`, err);
+      logger.error(`❌ Failed to check release for ${repo}:`, err);
     }
   }
 }
